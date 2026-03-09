@@ -6,6 +6,16 @@ SoilGuard: An IoT and LSTM-Based Predictive Maintenance System for Smart Farming
 
 SoilGuard is an intelligent irrigation system that combines Internet of Things (IoT) sensors with machine learning to predict soil moisture levels and optimize water usage in agriculture. The system uses real-time sensor data from Blynk-connected devices and an LSTM (Long Short-Term Memory) neural network to forecast future moisture conditions, enabling proactive irrigation management.
 
+## System Workflow
+
+1. **IoT sensors** collect soil moisture and temperature data
+2. **Data is transmitted** to the Blynk cloud platform
+3. **The Python logger** (`log_data.py`) fetches sensor readings via the Blynk API
+4. **Sensor data is stored** in a CSV dataset (`soilguard_log.csv`)
+5. **The LSTM model** analyzes historical readings
+6. **The AI controller** predicts future soil moisture levels
+7. **Farmers can use predictions** to optimize irrigation schedules
+
 ## Features
 
 - **Real-time Monitoring**: Continuously fetches soil moisture and temperature data from IoT sensors via Blynk API
@@ -13,13 +23,52 @@ SoilGuard is an intelligent irrigation system that combines Internet of Things (
 - **Automated Logging**: Records sensor data to CSV files for analysis and model training
 - **Smart Irrigation**: Helps prevent over/under watering by predicting moisture trends
 
-## Architecture
+## Tech Stack
+
+### Programming Language
+- Python
+
+### Machine Learning
+- TensorFlow
+- LSTM Neural Networks
+
+### IoT Platform
+- Blynk Cloud
+
+### Data Processing
+- NumPy
+
+### Communication
+- REST API
+
+### Hardware
+- Soil Moisture Sensor
+- Temperature Sensor
+- IoT Microcontroller (ESP8266/ESP32)
 
 The system consists of three main components:
 
 1. **AI Controller** (`ai_controller.py`): Main prediction engine that fetches live data and makes moisture predictions
 2. **Data Logger** (`log_data.py`): Background service that logs sensor readings to CSV files
 3. **LSTM Model** (`moisture_lstm.h5`): Pre-trained neural network for moisture prediction
+
+### Architecture Diagram
+
+```
+Sensors (Moisture & Temperature)
+        ↓
+    Blynk Cloud
+        ↓
+   Python Logger
+        ↓
+   CSV Dataset
+        ↓
+   LSTM Model
+        ↓
+   Prediction
+        ↓
+Smart Irrigation
+```
 
 ## Requirements
 
